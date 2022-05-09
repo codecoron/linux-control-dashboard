@@ -1,45 +1,122 @@
 <template>
-  <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-    <el-tab-pane label="实例详情" name="first">
-      <el-descriptions title="基本信息"> </el-descriptions>
-      <el-descriptions title="Centos    运行中">
-        <el-descriptions-item label="实例ID">akshalksv5a</el-descriptions-item>
-        <el-descriptions-item label="IP">200.201.18.5</el-descriptions-item>
-        <el-descriptions-item label="主机名">hostname</el-descriptions-item>
-        <el-descriptions-item label="操作">
-          <button>重启</button>
-          <button>关机</button>
-          <!-- <el-tag size="small"> 重启</el-tag> -->
-          <!-- <el-tag size="small">关机</el-tag> -->
-        </el-descriptions-item>
-        <el-descriptions-item label=""></el-descriptions-item>
-        <el-descriptions-item label="描述">
-          <el-tag size="small">描述</el-tag>
-        </el-descriptions-item>
-      </el-descriptions>
-    </el-tab-pane>
-    <el-tab-pane label="监控" name="second">监控</el-tab-pane>
-    <el-tab-pane label="远程命令/文件" name="third">远程命令/文件 </el-tab-pane>
-    <el-tab-pane label="操作记录" name="fourth">操作记录</el-tab-pane>
-    <el-tab-pane label="服务安装" name="fifth"> </el-tab-pane>
-  </el-tabs>
+  <nav class="navbar">
+    <div class="leftMenu">
+      <img src="../assets/logo.png" />
+    </div>
+    <div class="rightMenu">
+      <!-- 国旗 -->
+      <!-- <img src="../assets/flag.png" class="flag" /> -->
+
+      <!-- DEBUG -->
+      <!-- <span>{{ $store.state.userInfo.username }}({{ role }})</span> -->
+      <span>{{ role }}</span>
+      <img class="ml-5" style="height: 30px" src="@/assets/gita.gif" alt="" />
+      <span class="line"></span>
+      <span class="logout" @click="logout">退出登录</span>
+      <img class="langSelect" src="../assets/cn.png" />
+    </div>
+  </nav>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      activeName: "first",
-    };
+  name: "navbar",
+  props: {
+    userinfo: String,
   },
+  data() {
+    return {};
+  },
+
+  computed: {
+    role() {
+      let obj = {
+        1: "超级管理员",
+        2: "管理员",
+        3: "观察员",
+      };
+      let type = 1;
+      // let type = this.$store.state.userInfo.type;
+      return obj[type];
+    },
+  },
+
   methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
+    logout() {
+      console.log("logout------------------------>");
+      // DEBUG 去除登出的操作
+      // this.$store.commit("set_userInfo", {});
+      // this.$store.commit("set_token", "");
+      // this.$router.push("/login");
     },
   },
 };
 </script>
 
-<!-- centos(200.201.18.5) -->
-<!-- centos(200.201.18.6) -->
-<!-- centos(200.201.18.7) -->
+<style scoped lang="less">
+.navbar {
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+}
+
+.leftMenu {
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  > img {
+    height: 35px;
+    width: auto;
+    margin-left: 15px;
+  }
+}
+
+.rightMenu {
+  display: flex;
+  align-items: center;
+  // padding-right: 50px;
+  .lang {
+    width: 0;
+    height: 0;
+    border: 25px solid #014ff7;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    .text {
+      font-size: 20px;
+      top: -24px;
+      left: 0;
+      color: #fff;
+    }
+  }
+
+  .flag {
+    height: 30px;
+    width: auto;
+    margin-right: 10px;
+  }
+  .logout {
+    color: #409eff;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  .line {
+    height: 16px;
+    width: 1px;
+    background: rgba(90, 88, 88, 0.36);
+    margin-left: 10px;
+  }
+  .icon-screenfull {
+    font-size: 22px;
+    margin: 0 10px;
+  }
+  .langSelect {
+    height: 50px;
+    width: auto;
+  }
+}
+</style>
