@@ -54,6 +54,24 @@ const superRoutes = [
       },
     ],
   },
+  {
+    path: "/server",
+    name: "server",
+    meta: {
+      title: "server",
+      icon: "icon-d-right-arrow",
+    },
+    // hidden: isDev ? false : true,
+    component: Layout,
+    redirect: "/server/index",
+    children: [
+      {
+        path: "index",
+        name: "server-index",
+        component: () => import("@/views/server/index.vue"),
+      },
+    ],
+  },
 ];
 
 const router = new Router({

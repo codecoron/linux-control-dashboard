@@ -1,6 +1,6 @@
 import axios from "axios";
-import { Message, Loading } from "element-ui";
-import store from "../store";
+// import { Message, Loading } from "element-ui";
+// import store from "../store";
 let isDev = process.env.NODE_ENV === "development";
 let baseURL;
 // 这里idDev为true即开发模式
@@ -20,72 +20,75 @@ const service = axios.create({
 
 let loadObj;
 // request拦截器
-service.interceptors.request.use(
-  (config) => {
-    let port = 7004; // 7001~7040
-    config.data = {
-      ...config.data,
-      port,
-    };
-    config.params = {
-      ...config.params,
-      port,
-    };
-    if (!loadObj) {
-      loadObj = Loading.service({
-        lock: true,
-        target: "#loading",
-        text: "努力加载中...",
-        spinner: "el-icon-loading",
-        background: "rgba(0, 0, 0, 0.7)",
-      });
-    }
-
-    // 请求头添加token
-    config.headers["user-token"] = store.state.token;
-    let roleType = store.state.userInfo.type * 1;
-    if (config.method === "post" && roleType === 3) {
-      return Promise.reject({
-        message: "没有权限,请使用管理员账号登录",
-      });
-    } else {
-      return config;
-    }
-  },
-  (error) => {
-    setTimeout(() => {
-      loadObj.close();
-    }, 300);
-    return Promise.reject(error);
-  }
-);
+// service.interceptors.request.use(
+//   (config) => {
+//     let port = 7004; // 7001~7040
+//     config.data = {
+//       ...config.data,
+//       port,
+//     };
+//     config.params = {
+//       ...config.params,
+//       port,
+//     };
+//     if (!loadObj) {
+//       loadObj = Loading.service({
+//         lock: true,
+//         target: "#loading",
+//         text: "努力加载中...",
+//         spinner: "el-icon-loading",
+//         background: "rgba(0, 0, 0, 0.7)",
+//       });
+//     }
+//     // 请求头添加token
+//     config.headers["user-token"] = store.state.token;
+//     let roleType = store.state.userInfo.type * 1;
+//     if (config.method === "post" && roleType === 3) {
+//       return Promise.reject({
+//         message: "没有权限,请使用管理员账号登录",
+//       });
+//     } else {
+//       return config;
+//     }
+//   },
+//   (error) => {
+//     setTimeout(() => {
+//       loadObj.close();
+//     }, 300);
+//     return Promise.reject(error);
+//   }
+// );
 
 // response 拦截器
+// TODO 如何把拦截器都取消？
 service.interceptors.response.use(
   (response) => {
-    setTimeout(() => {
-      loadObj.close();
-    }, 300);
-    const res = response.data;
-    if (res.code == 666) {
-      return res;
-    } else {
-      Message({
-        message: res.msg,
-        type: "error",
-      });
-      return Promise.reject(res.msg);
-    }
+    return response.data;
+    // setTimeout(() => {
+    //   // loadObj.close();
+    // }, 300);
+    // const res = response.data;
+    // // DEBUG
+    // console.log(res.code)
+    // if (res.code == 666) {
+    //   return res;
+    // } else {
+    //   Message({
+    //     message: res.msg,
+    //     type: "error",
+    //   });
+    //   return Promise.reject(res.msg);
+    // }
   },
   (error) => {
-    setTimeout(() => {
-      loadObj.close();
-    }, 300);
-    Message({
-      message: error.message,
-      type: "error",
-    });
-    return Promise.reject(error.message);
+    // setTimeout(() => {
+    //   // loadObj.close();
+    // }, 300);
+    // Message({
+    //   message: error.message,
+    //   type: "error",
+    // });
+    // return Promise.reject(error.message);
   }
 );
 
