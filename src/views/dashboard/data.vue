@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard-sensorlist ">
+  <div class="dashboard-sensorlist">
     <ContentTitle :info="ctInfo" />
 
     <div class="mainContent">

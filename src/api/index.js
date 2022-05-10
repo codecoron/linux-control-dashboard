@@ -47,9 +47,9 @@ export const $sensorCount = () => {
 // }
 
 // device设备
-// export const $deviceCount = () => {
-//   return $axios.get('/device/count');
-// }
+export const $deviceCount = () => {
+  return $axios.get('/device/count');
+}
 export const $deviceSensorList = () => {
   return $axios.get('/device/sensorList');
 }

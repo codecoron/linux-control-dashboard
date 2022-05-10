@@ -3,13 +3,13 @@
     <el-card
       class="card-box"
       shadow="hover"
-      v-for="(value, key) in modueObj"
+      v-for="(value, key) in hostList"
       :key="key"
     >
       <h2 class="lh15">
         <span>{{ value }}</span>
       </h2>
-      <ul class="mt-20 list">
+      <!-- <ul class="mt-20 list">
         <li
           class="item flex aic"
           v-for="(item, index) in apiList.filter((item) =>
@@ -22,7 +22,7 @@
           </div>
           <span class="url">{{ item.url }}</span>
         </li>
-      </ul>
+      </ul> -->
     </el-card>
     <!-- <el-card class="card-box fix"></el-card>
     <el-card class="card-box fix"></el-card>
@@ -37,6 +37,7 @@ export default {
   data() {
     return {
       apiList: [],
+      hostList: [],
       modueObj: {
         account: "账户模块",
         device: "设备模块",
@@ -49,6 +50,11 @@ export default {
 
   mounted() {
     this.getList();
+    this.hostList.push("centosA");
+    this.hostList.push("centosB");
+    this.hostList.push("centosC");
+    this.hostList.push("centosD");
+    this.hostList.push("centosE");
   },
   methods: {
     onCopy() {

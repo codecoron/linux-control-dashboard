@@ -42,16 +42,16 @@ const superRoutes = [
         path: "dashboard",
         name: "home-dashboard",
         meta: {
-          title: "仪表盘",
+          title: "仪表板",
         },
         component: () => import("@/views/dashboard/index.vue"),
       },
-      {
-        path: "data",
-        meta: { title: "设备数据" },
-        name: "data-view",
-        component: () => import("@/views/dashboard/data.vue"),
-      },
+      // {
+      //   path: "data",
+      //   meta: { title: "主机详情" },
+      //   name: "data-view",
+      //   component: () => import("@/views/dashboard/data.vue"),
+      // },
     ],
   },
   {

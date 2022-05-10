@@ -1,10 +1,10 @@
 <template>
   <div class="flex jc-sb">
-    <el-card class="box-card bc1 fg1">
+    <el-card class="box-card bc1 bc2 fg1">
       <template #header>
         <div class="card-header">
           <div>
-            <span>设备概览</span>
+            <span>主机概览</span>
             <el-tooltip
               class="item"
               effect="dark"
@@ -14,42 +14,38 @@
               <span class="iconfont icon-askoutline"></span>
             </el-tooltip>
           </div>
-          <el-button class="button" size="mini" type="text">绑定设备</el-button>
+          <el-button class="button" size="mini" type="text">添加主机</el-button>
         </div>
       </template>
       <div class="bcBody">
-        <img src="../../assets/gateway.png" />
+        <img src="../../assets/icon_host.png" />
         <span class="line"></span>
         <div class="getway">
           <span>{{ LoRaWAN.total }}</span>
-          <span>LoRaWAN</span>
-          <!-- backdoor 去除i18n -->
-          <!-- <span>{{ $t("lang.gateway") }}</span> -->
-          <span>{{ "lang.gateway" }}</span>
+          <span>主机数</span>
         </div>
         <span class="line"></span>
         <div class="getway">
           <span>{{ LoRaPP.total }}</span>
-          <span>LoRaPP</span>
-          <span>网关</span>
+          <span>在线</span>
         </div>
         <span class="line"></span>
         <div class="getway">
           <span>{{ group }}</span>
-          <span style="height: 20px"></span>
-          <span>群组</span>
+          <!-- <span style="height: 20px"></span> -->
+          <span>异常</span>
         </div>
         <span class="line"></span>
         <!-- <img src="../../assets/devNode.png" /> -->
-        <i class="icon iconfont icon-yalichuanganqi f999"></i>
+        <!-- <i class="icon iconfont icon-yalichuanganqi f999"></i>
         <div class="devNode">
           <span>{{ sensor.total }}</span>
           <span>传感器节点</span>
-        </div>
+        </div> -->
       </div>
     </el-card>
     <!-- 监控 -->
-    <el-card class="box-card bc2">
+    <!-- <el-card class="box-card bc2">
       <template #header>
         <div class="card-header">
           <div>
@@ -79,7 +75,7 @@
           <i>{{ sensor.lowBattery }}</i>
         </li>
       </ul>
-    </el-card>
+    </el-card> -->
   </div>
 </template>
 
