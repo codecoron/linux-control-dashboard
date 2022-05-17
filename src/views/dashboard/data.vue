@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { $deviceSensorList } from "@/api";
+// import { $deviceSensorList } from "@/api";
 import ContentTitle from "@/components/ContentTitle";
 import PreView from "../dashboard/PreView";
 export default {
@@ -79,15 +79,15 @@ export default {
     };
   },
   created() {
-    this.getSensorList();
+    // this.getSensorList();
   },
 
   methods: {
-    getSensorList() {
-      $deviceSensorList().then((res) => {
-        this.sensorList = res.data;
-      });
-    },
+    // getSensorList() {
+    //   $deviceSensorList().then((res) => {
+    //     this.sensorList = res.data;
+    //   });
+    // },
   },
 };
 </script>

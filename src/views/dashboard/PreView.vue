@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import { $deviceCount } from "@/api/index";
+// import { $deviceCount } from "@/api/index";
 export default {
   data() {
     return {
@@ -101,19 +101,20 @@ export default {
     };
   },
   created() {
-    this.getCount();
+    // this.getCount();
   },
 
   methods: {
-    getCount() {
-      $deviceCount().then((res) => {
-        let { LoRaWAN, LoRaPP, group, sensor } = res.data;
-        this.LoRaWAN = LoRaWAN;
-        this.LoRaPP = LoRaPP;
-        this.group = group;
-        this.sensor = sensor;
-      });
-    },
+    // getCount() {
+    //   $deviceCount().then((res) => {
+    //     let { LoRaWAN, LoRaPP, group, sensor } = res.data;
+    //     this.LoRaWAN = LoRaWAN;
+    //     this.LoRaPP = LoRaPP;
+    //     // this.group = group;
+    //     this.group = 5;
+    //     this.sensor = sensor;
+    //   });
+    // },
   },
 };
 </script>

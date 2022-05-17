@@ -25,12 +25,12 @@ export const superRoutes = [
         },
         component: () => import("@/views/dashboard/index.vue"),
       },
-      {
-        path: "data",
-        meta: { title: "设备数据" },
-        name: "data-view",
-        component: () => import("@/views/dashboard/data.vue"),
-      },
+      // {
+      //   path: "data",
+      //   meta: { title: "设备数据" },
+      //   name: "data-view",
+      //   component: () => import("@/views/dashboard/data.vue"),
+      // },
     ],
   },
 ];

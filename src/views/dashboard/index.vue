@@ -41,9 +41,75 @@
           </ul>
         </el-card>
       </div>
-      <!-- 数据可视化 -->
-      <!-- <Chart /> -->
-      <div class="list-box" v-for="(value, key) in sensorList" :key="key">
+
+      <div class="list-box">
+        <el-card class="sensor-box box-card bc1 bc4 bc6">
+          <template #header>
+            <div class="card-header">
+              <div>
+                <span>「cenots 7」</span>
+              </div>
+              <span>运行图标</span>
+              <span>运行中</span>
+            </div>
+          </template>
+          <ul class="mt-20 list">
+            <li class="item flex aic">
+              <p>
+                <span>主机名称 </span>
+                <span class="margin-left=10px margin-right=10px"> : </span>
+                <span>izwz996atlhrk55bzhnx5az</span>
+              </p>
+            </li>
+            <li class="item flex aic">
+              <p>
+                <span>IP </span
+                ><span class="margin-left=10px margin-right=10px"> : </span>
+                <span>200.201.18.5</span>
+              </p>
+            </li>
+            <li class="item flex aic">
+              <p>
+                <span>操作系统</span
+                ><span class="margin-left=10px margin-right=10px"> : </span>
+                <span>CentOS Linux release 7.2.1511 (Core)</span>
+              </p>
+            </li>
+            <li class="item flex aic">
+              <p>
+                <span>CPU&内存</span
+                ><span class="margin-left=10px margin-right=10px"> : </span>
+                <span>1核 8Gibt</span>
+              </p>
+            </li>
+            <li class="item flex aic">
+              <p>
+                <span>网卡数量</span
+                ><span class="margin-left=10px margin-right=10px"> : </span>
+                <span>1(eth0)</span>
+              </p>
+            </li>
+            <li class="item flex aic">
+              <p>
+                <span>磁盘数量</span
+                ><span class="margin-left=10px margin-right=10px"> : </span>
+                <span>1</span>
+              </p>
+            </li>
+            <li class="item flex aic">
+              <p>
+                <span>描述</span
+                ><span class="margin-left=10px margin-right=10px"> : </span>
+                <span>Web服务器</span>
+              </p>
+            </li>
+          </ul>
+
+          再插入一些图表信息,负载情况，CPU使用率，内存使用率，磁盘使用率
+        </el-card>
+      </div>
+
+      <!-- <div class="list-box" v-for="(value, key) in sensorList" :key="key">
         <el-card class="sensor-box box-card bc1 bc4 bc6">
           <template #header>
             <div class="card-header">
@@ -53,47 +119,8 @@
               <div class="boxTools"></div>
             </div>
           </template>
-          <ul class="devList flex aic fww jc-sb">
-            <template v-for="item in value">
-              <li class="devItem pt-5" :key="item.eui">
-                <p>
-                  <i
-                    v-if="item.online"
-                    class="icon iconfont icon-yalichuanganqi f999"
-                    style="color: #3dd93d"
-                  ></i>
-                  <i
-                    v-else
-                    class="icon iconfont icon-yalichuanganqi"
-                    style="color: gray"
-                  ></i>
-                  <span
-                    v-if="item.powerNum < 30 && item.online"
-                    class="icon iconfont icon-dianchidianliang red f26"
-                    style="margin-left: -15px"
-                  ></span>
-                </p>
-                <span class="devValue">{{ item.devValue }}</span>
-                <span class="devName">{{ item.devName }}</span>
-                <div class="devInfo">
-                  <span class="devId">EUI: {{ item.eui }}</span>
-                  <span class="uTime">{{ item.uploadTime }}</span>
-                </div>
-              </li>
-            </template>
-            <li class="fixed"></li>
-            <li class="fixed"></li>
-            <li class="fixed"></li>
-            <li class="fixed"></li>
-            <li class="fixed"></li>
-            <li class="fixed"></li>
-            <li class="fixed"></li>
-            <li class="fixed"></li>
-            <li class="fixed"></li>
-            <li class="fixed"></li>
-          </ul>
         </el-card>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -102,7 +129,7 @@
 import ContentTitle from "@/components/ContentTitle.vue";
 // import Chart from "./Chart.vue";
 import PreView from "./PreView.vue";
-import { $deviceSensorList } from "@/api";
+// import { $deviceSensorList } from "@/api";
 export default {
   name: "dashboard",
   components: { ContentTitle, PreView },
@@ -121,14 +148,15 @@ export default {
     };
   },
   created() {
-    this.getSensorList();
+    // this.getSensorList();
   },
   methods: {
-    getSensorList() {
-      $deviceSensorList().then((res) => {
-        this.sensorList = res.data;
-      });
-    },
+    // getSensorList() {
+    //   $deviceSensorList().then((res) => {
+    //     this.sensorList = res.data;
+    //     console.log(this.sensorList);
+    //   });
+    // },
   },
 };
 </script>
@@ -137,6 +165,10 @@ export default {
 @import "./index.less";
 .dashboard-sensorlist {
   // margin-top: 10px;
+}
+.hostinfo {
+  margin-left: 20%;
+  margin-right: 20%;
 }
 .list-box {
   width: 100%;
@@ -398,5 +430,30 @@ export default {
 .devItem {
   width: 25%;
   margin-top: 5px;
+}
+.server-index {
+  align-content: flex-start;
+  .card-box {
+    width: 30.3%;
+    flex-grow: 1;
+    &.fix {
+      padding-top: 0;
+      margin-top: 0;
+      height: 0;
+      border: 0;
+    }
+  }
+  .list {
+    width: 500px;
+  }
+  .item {
+    margin-top: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    justify-content: flex-start;
+  }
+  .url {
+    margin-left: 15px;
+  }
 }
 </style>

@@ -39,20 +39,20 @@ import $axios from '../utils/request';
 // export const $sensorDel = (data = {}) => {
 //   return $axios.post('/sensor/del', data);
 // }
-export const $sensorCount = () => {
-  return $axios.get('/sensor/count');
-}
+// export const $sensorCount = () => {
+//   return $axios.get('/sensor/count');
+// }
 // export const $sensorChangGroup = (params) => {
 //   return $axios.get('/sensor/changeGroup', { params });
 // }
 
 // device设备
-export const $deviceCount = () => {
-  return $axios.get('/device/count');
-}
-export const $deviceSensorList = () => {
-  return $axios.get('/device/sensorList');
-}
+// export const $deviceCount = () => {
+//   return $axios.get('/device/count');
+// }
+// export const $deviceSensorList = () => {
+//   return $axios.get('/device/sensorList');
+// }
 // 设备群组
 // export const $groupList = (data = {}) => {
 //   return $axios.post('/group/list', data);
