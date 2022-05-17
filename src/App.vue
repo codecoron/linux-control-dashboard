@@ -1,16 +1,12 @@
 <template>
   <div id="app">
-    <cycle></cycle>
-
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import cycle from "./views/dashboard/cycle.vue";
 export default {
   // components: { cycle },
-  components: { cycle },
 };
 </script>
 

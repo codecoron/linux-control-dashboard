@@ -106,6 +106,12 @@
           </ul>
 
           再插入一些图表信息,负载情况，CPU使用率，内存使用率，磁盘使用率
+          <div>
+            <load></load>
+            <cpu></cpu>
+            <memory></memory>
+            <disk></disk>
+          </div>
         </el-card>
       </div>
 
@@ -129,11 +135,14 @@
 import ContentTitle from "@/components/ContentTitle.vue";
 // import Chart from "./Chart.vue";
 import PreView from "./PreView.vue";
+import load from "./Load";
+import cpu from "./Cpu";
+import memory from "./Memory";
+import disk from "./Disk";
 // import { $deviceSensorList } from "@/api";
 export default {
   name: "dashboard",
-  components: { ContentTitle, PreView },
-  // components: { ContentTitle, Chart, PreView },
+  components: { ContentTitle, PreView, load, cpu, memory, disk },
   data() {
     return {
       ctInfo: {
