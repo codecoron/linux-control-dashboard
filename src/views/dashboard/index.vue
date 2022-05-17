@@ -53,66 +53,108 @@
               <span>运行中</span>
             </div>
           </template>
-          <ul class="mt-20 list">
-            <li class="item flex aic">
-              <p>
-                <span>主机名称 </span>
-                <span class="margin-left=10px margin-right=10px"> : </span>
-                <span>izwz996atlhrk55bzhnx5az</span>
-              </p>
-            </li>
-            <li class="item flex aic">
-              <p>
-                <span>IP </span
-                ><span class="margin-left=10px margin-right=10px"> : </span>
-                <span>200.201.18.5</span>
-              </p>
-            </li>
-            <li class="item flex aic">
-              <p>
-                <span>操作系统</span
-                ><span class="margin-left=10px margin-right=10px"> : </span>
-                <span>CentOS Linux release 7.2.1511 (Core)</span>
-              </p>
-            </li>
-            <li class="item flex aic">
-              <p>
-                <span>CPU&内存</span
-                ><span class="margin-left=10px margin-right=10px"> : </span>
-                <span>1核 8Gibt</span>
-              </p>
-            </li>
-            <li class="item flex aic">
-              <p>
-                <span>网卡数量</span
-                ><span class="margin-left=10px margin-right=10px"> : </span>
-                <span>1(eth0)</span>
-              </p>
-            </li>
-            <li class="item flex aic">
-              <p>
-                <span>磁盘数量</span
-                ><span class="margin-left=10px margin-right=10px"> : </span>
-                <span>1</span>
-              </p>
-            </li>
-            <li class="item flex aic">
-              <p>
-                <span>描述</span
-                ><span class="margin-left=10px margin-right=10px"> : </span>
-                <span>Web服务器</span>
-              </p>
-            </li>
-          </ul>
 
-          再插入一些图表信息,负载情况，CPU使用率，内存使用率，磁盘使用率
-          <div>
+          <div class="flex baseInfo">
+            <!-- <ul class="mt-20 list">
+              <li class="item flex aic jc-sb mb-10">
+                <p class="flex item2">
+                  <span>主机名称 :</span>
+                  <span>izwz996atlhrk55bzhnx5az</span>
+                </p>
+                <p>修改</p>
+              </li>
+              <li class="item flex aic">
+                <p>
+                  <span>IP </span
+                  ><span class="margin-left=10px margin-right=10px"> : </span>
+                  <span>200.201.18.5</span>
+                </p>
+              </li>
+              <li class="item flex aic">
+                <p>
+                  <span>操作系统</span
+                  ><span class="margin-left=10px margin-right=10px"> : </span>
+                  <span>CentOS Linux release 7.2.1511 (Core)</span>
+                </p>
+              </li>
+              <li class="item flex aic">
+                <p>
+                  <span>CPU&内存</span
+                  ><span class="margin-left=10px margin-right=10px"> : </span>
+                  <span>1核 8Gibt</span>
+                </p>
+              </li>
+            </ul> -->
+            <ul class="mt-20 list">
+              <li
+                v-bind:key="index"
+                v-for="(items, index) in hostInfo"
+                class="item flex aic jc-sb mb-10"
+              >
+                <p
+                  v-for="(value, item) in items"
+                  v-bind:key="item"
+                  class="flex item2"
+                >
+                  <!-- <span>主机名称 </span> -->
+                  <!-- <span>izwz996atlhrk55bzhnx5az</span> -->
+                  <span>{{ item }}</span>
+                  <span>{{ value }}</span>
+                </p>
+                <p>修改</p>
+              </li>
+            </ul>
+            <!-- 主机信息的右边操作 -->
+            <ul class="mt-20 list">
+              <li
+                v-bind:key="index"
+                v-for="(items, index) in hostInfo_right"
+                class="item flex aic jc-sb mb-10"
+              >
+                <p
+                  v-for="(value, item) in items"
+                  v-bind:key="item"
+                  class="flex item2"
+                >
+                  <!-- <span>主机名称 </span> -->
+                  <!-- <span>izwz996atlhrk55bzhnx5az</span> -->
+                  <span>{{ item }}</span>
+                  <span>{{ value }}</span>
+                </p>
+                <p>修改</p>
+              </li>
+            </ul>
+            <!-- <ul class="mt-20 list">
+              <li class="item flex aic">
+                <p>
+                  <span>网卡数量</span
+                  ><span class="margin-left=10px margin-right=10px"> : </span>
+                  <span>1(eth0)</span>
+                </p>
+              </li>
+              <li class="item flex aic">
+                <p>
+                  <span>磁盘数量</span
+                  ><span class="margin-left=10px margin-right=10px"> : </span>
+                  <span>1</span>
+                </p>
+              </li>
+              <li class="item flex aic">
+                <p>
+                  <span>描述</span
+                  ><span class="margin-left=10px margin-right=10px"> : </span>
+                  <span>Web服务器</span>
+                </p>
+              </li>
+            </ul> -->
+          </div>
+          <div class="chart">
             <load></load>
             <cpu></cpu>
             <memory></memory>
             <disk></disk>
           </div>
-          <div>
+          <div class="flex mt-60">
             <eth></eth>
             <diskio></diskio>
           </div>
@@ -160,6 +202,18 @@ export default {
         },
       },
       sensorList: [],
+      hostInfo: [
+        { 主机名称: "izwz996atlhrk55bzhnx5az" },
+        { IP: "200.201.18.5" },
+        { 操作系统: "CentOS Linux release 7.2.1511 (Core)" },
+        { CPU: "1核" },
+        { 内存: "8Gitb" },
+      ],
+      hostInfo_right: [
+        { 开机时间: "23min" },
+        { 安全组: "qVs2zDUjmKSAKG1MKH" },
+        {},
+      ],
     };
   },
   created() {
