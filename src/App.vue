@@ -1,12 +1,14 @@
 <template>
   <div id="app">
+    <!-- <eth></eth> -->
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import eth from "./views/dashboard/eth";
 export default {
-  // components: { cycle },
+  components: { eth },
 };
 </script>
 

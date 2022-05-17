@@ -112,6 +112,10 @@
             <memory></memory>
             <disk></disk>
           </div>
+          <div>
+            <eth></eth>
+            <diskio></diskio>
+          </div>
         </el-card>
       </div>
 
@@ -139,10 +143,12 @@ import load from "./Load";
 import cpu from "./Cpu";
 import memory from "./Memory";
 import disk from "./Disk";
+import eth from "./eth";
+import diskio from "./diskio";
 // import { $deviceSensorList } from "@/api";
 export default {
   name: "dashboard",
-  components: { ContentTitle, PreView, load, cpu, memory, disk },
+  components: { ContentTitle, PreView, load, cpu, memory, disk, eth, diskio },
   data() {
     return {
       ctInfo: {
