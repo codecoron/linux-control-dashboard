@@ -179,7 +179,6 @@
 
 <script>
 import ContentTitle from "@/components/ContentTitle.vue";
-// import Chart from "./Chart.vue";
 import PreView from "./PreView.vue";
 import load from "./Load";
 import cpu from "./Cpu";

@@ -1,14 +1,16 @@
 <template>
   <div id="app">
     <!-- <eth></eth> -->
+    <!-- <addhost></addhost> -->
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import eth from "./views/dashboard/eth";
+import addhost from "./views/addhost/add";
 export default {
-  components: { eth },
+  components: { eth, addhost },
 };
 </script>
 

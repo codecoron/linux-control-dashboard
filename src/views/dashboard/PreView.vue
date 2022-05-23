@@ -14,7 +14,9 @@
               <span class="iconfont icon-askoutline"></span>
             </el-tooltip>
           </div>
-          <el-button class="button" size="mini" type="text">添加主机</el-button>
+          <el-button class="button" size="mini" type="text">
+            <addhost></addhost>
+          </el-button>
         </div>
       </template>
       <div class="bcBody">
@@ -81,18 +83,22 @@
 
 <script>
 // import { $deviceCount } from "@/api/index";
+import addhost from "@/views/addhost/add";
 export default {
+  components: {
+    addhost,
+  },
   data() {
     return {
       LoRaWAN: {
-        total: 0,
+        total: 1,
         offline: 0,
       },
       LoRaPP: {
-        total: 0,
+        total: 1,
         offline: 0,
       },
-      group: 6,
+      group: 0,
       sensor: {
         total: 40,
         offline: 27,

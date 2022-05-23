@@ -44,7 +44,7 @@ export default {
       setInterval(() => {
         this.cpu++;
         this.left = this.total - this.cpu;
-      }, 1000);
+      }, 20000);
     },
     draw() {
       this.chartList.chart1 = echarts.init(this.$refs.chart1);

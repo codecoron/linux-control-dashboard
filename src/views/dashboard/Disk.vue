@@ -1,10 +1,10 @@
 <template>
   <div style="width: 300px; height: 150px">
     <!-- <div id="main" style="width: 600px; height: 400px"></div> -->
-    <div style="width: 300px; text-align: center"><span>负载状态</span></div>
+    <div style="width: 300px; text-align: center"><span>根目录分区/</span></div>
     <div style="width: 300px; height: 150px" ref="chart1"></div>
     <div style="width: 300px; text-align: center">
-      <span>运行流畅</span>
+      <span>3.6/18(GB)</span>
     </div>
 
     <!-- <button @click="addcpu()">cpu负载提高</button> -->
@@ -17,7 +17,7 @@ import * as echarts from "echarts";
 export default {
   data() {
     const total = 100;
-    var cpu = 30;
+    var cpu = 18;
     var left = total - cpu;
     return {
       total: total,
@@ -44,7 +44,7 @@ export default {
       setInterval(() => {
         this.cpu++;
         this.left = this.total - this.cpu;
-      }, 1000);
+      }, 10000);
     },
     draw() {
       this.chartList.chart1 = echarts.init(this.$refs.chart1);

@@ -1,5 +1,10 @@
 import $axios from '../utils/request';
 
+// diskinfo模块
+export const $diskinfo = (id) => {
+    return $axios.get('/:id/diskinfo')
+}
+
 // account模块
 // export const $accountAdd = (data) => {
 //   return $axios.post('/account/add', data);
