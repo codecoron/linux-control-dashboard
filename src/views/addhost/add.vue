@@ -1,11 +1,14 @@
 <!-- Table -->
 <template>
   <div>
-    <el-button type="text" @click="dialogTableVisible = true"
+    <el-button
+      class="host-margin"
+      type="text"
+      @click="dialogTableVisible = true"
       >现有主机</el-button
     >
 
-    <el-dialog title="收货地址" :visible.sync="dialogTableVisible">
+    <el-dialog title="受控主机" :visible.sync="dialogTableVisible">
       <el-table :data="gridData">
         <el-table-column
           property="date"
@@ -14,15 +17,15 @@
         ></el-table-column>
         <el-table-column
           property="name"
-          label="姓名"
+          label="主机名"
           width="200"
         ></el-table-column>
-        <el-table-column property="address" label="地址"></el-table-column>
+        <el-table-column property="address" label="接入IP"></el-table-column>
       </el-table>
     </el-dialog>
 
     <!-- Form -->
-    <el-button type="text" @click="dialogFormVisible = true"
+    <el-button class="host-margin" type="text" @click="dialogFormVisible = true"
       >添加主机</el-button
     >
 
@@ -45,9 +48,7 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogFormVisible = false"
-          >确 定</el-button
-        >
+        <el-button type="primary" @click="addhost">确 定</el-button>
       </div>
     </el-dialog>
   </div>
@@ -59,24 +60,14 @@ export default {
     return {
       gridData: [
         {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          date: "2022-05-24",
+          name: "centos7",
+          address: "200.201.20.2",
         },
         {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          date: "2022-05-23",
+          name: "centos 7.6",
+          address: "200.201.18.5",
         },
       ],
       dialogTableVisible: false,
@@ -95,5 +86,28 @@ export default {
       formLabelWidth: "120px",
     };
   },
+  methods: {
+    addhost() {
+      console.log("添加主机", this.form.name, this.form.password);
+      var mydate = new Date();
+      var month = mydate.getMonth() + 1;
+      var str_date =
+        mydate.getFullYear() + "-" + month + "-" + mydate.getDate();
+      this.gridData.push({
+        date: str_date,
+        name: this.form.name,
+        address: this.form.password,
+      });
+      this.dialogFormVisible = false;
+    },
+  },
 };
 </script>
+
+
+<style>
+.host-margin {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+</style>
