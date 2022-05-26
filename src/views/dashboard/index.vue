@@ -26,17 +26,19 @@
           <ul class="infoList">
             <!-- <li>ABCDEFGHIJKLMNOPQRSTUVWXYZ</li> -->
             <li>
-              <p>
-                <span class="iconfont icon-info"></span
-                ><span>ABCDEFGHIJKLMNOPQRSTUVWXYZ </span>
+              <p class="notice">
+                <span class="iconfont icon-info">
+                  主机 centos 7 运行负载过高
+                </span>
               </p>
               <span class="cTitme">2020-02-13 14:28:07</span>
             </li>
             <li>
-              <span>TODO 太丑了，信息和时间没有间隔</span>
+              <!-- <span>TODO 太丑了，信息和时间没有间隔</span> -->
+              <span></span>
             </li>
             <li>
-              <span>TODO 整个card-box 宽度不知道是由什么决定的</span>
+              <!-- <span>TODO 整个card-box 宽度不知道是由什么决定的</span> -->
             </li>
           </ul>
         </el-card>
@@ -231,6 +233,9 @@ export default {
 
 <style lang="less" scoped>
 @import "./index.less";
+.notice {
+  margin-right: 50px;
+}
 .dashboard-sensorlist {
   // margin-top: 10px;
 }

@@ -1,6 +1,6 @@
 <template>
   <div style="width: 600px; height: 400px">
-    <div><span>流量 kB/s</span></div>
+    <div><span>磁盘IO kB/s</span></div>
     <div style="width: 600px; height: 400px" ref="chart1"></div>
   </div>
 </template>
@@ -13,7 +13,8 @@ export default {
     var oneDay = 24 * 3600 * 1000;
     var date = [];
     var data = [Math.random() * 150];
-    var now = new Date(base);
+    // var now = new Date(base);
+    var now = new Date();
 
     return {
       base: base,
@@ -30,7 +31,7 @@ export default {
   },
   methods: {
     initData() {
-      for (var i = 1; i < 100; i++) {
+      for (var i = 1; i < 10; i++) {
         this.addData();
       }
     },
@@ -40,14 +41,17 @@ export default {
       var data = this.data;
       var oneDay = this.oneDay;
 
-      now = [now.getFullYear(), now.getMonth() + 1, now.getDate()].join("/");
+      now = [now.getHours(), now.getMinutes(), now.getSeconds()].join(":");
+      // now = [now.getFullYear(), now.getMonth() + 1, now.getDate()].join("/");
       date.push(now);
       data.push((Math.random() - 0.4) * 10 + data[data.length - 1]);
       if (shift) {
         date.shift();
         data.shift();
       }
-      now = new Date(+new Date(now) + oneDay);
+      // now = new Date(+new Date(now) + oneDay);
+      now = new Date();
+      this.now = now;
     },
     draw() {
       this.chart1 = echarts.init(this.$refs.chart1);
@@ -95,7 +99,7 @@ export default {
             },
           ],
         });
-      }, 500);
+      }, 5000);
 
       option && mychart.setOption(option);
     },

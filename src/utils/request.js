@@ -5,11 +5,13 @@ let isDev = process.env.NODE_ENV === "development";
 let baseURL;
 // 这里idDev为true即开发模式
 if (!isDev) {
-  baseURL = "http://localhost:3007";
+  // baseURL = "http://localhost:3007";
+  baseURL = "http://192.168.28.193:3000";
 } else {
   // baseURL = "http://81.71.65.4:3007";
   // baseURL = "http://106.55.50.108:3007";
-  baseURL = "http://localhost:3007";
+  // baseURL = "http://localhost:3007";
+  baseURL = "http://192.168.28.193:3000";
   // 原本是生产环境才用的地址，但由于不想用本地数据库，所以加个取反!
 }
 
